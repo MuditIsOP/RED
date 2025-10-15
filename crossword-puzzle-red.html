@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossword - Coders' Arena</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        .orbitron-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        #crossword-container {
+            display: grid;
+            grid-template-columns: repeat(10, 40px);
+            grid-template-rows: repeat(10, 40px);
+            gap: 1px;
+        }
+        .crossword-cell {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border: 1px solid #000;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+        }
+        .black-cell {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="orbitron-font text-2xl font-bold">Coders' Arena</h1>
+                <span class="ml-4 px-3 py-1 bg-red-900 text-red-300 rounded-full text-sm">Team Red</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="team-red-dashboard.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                    Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Include the CryptoJS library for hashing the user id before sending it to the PuzzleMe server. -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <!-- Include the javascript library for embedding this puzzle. -->
+        <script id="pm-script" src="https://puzzleme.amuselabs.com/pmm/js/puzzleme-embed.js"></script>
+        <!-- Specify the Amuse Labs server name from where the puzzles will be served and trigger the embed flow. -->
+        <script>
+            PM_Config.PM_BasePath = "https://puzzleme.amuselabs.com/pmm/";
+        </script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const socket = io({
+                auth: {
+                    token: localStorage.getItem('token')
+                }
+            });
+        </script>
+        <!-- Specifies the puzzle to be embedded on the page. -->
+        <div style="position: relative; text-align: center;"><div class="pm-embed-div" data-id="b0ca8e65" data-set="c40255598dec140d40fd7bbf1d997c54a68c12d6e76ebdec3b9acb9e396e574a" data-puzzleType="crossword" data-height="700px" data-mobileMargin="10px"></div><div class="pm-attribution-div" style="font-family: sans-serif; font-size: 12px; color: rgb(102, 102, 102); position: absolute; top: 100%; left: 50%; transform: translate(-50%, 0px); padding-top: 5px; width: 100%;">Constructed using the <a href="https://amuselabs.com/games/crossword/" target="_blank" style="color: #666666; text-decoration: underline;">crossword maker</a> from Amuse Labs</div></div>
+    </main>
+</body>
+</html>

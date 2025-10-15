@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Guesser - Coders' Arena</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        .orbitron-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .stage-message {
+            font-size: 1.5rem;
+            line-height: 1.8rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="orbitron-font text-2xl font-bold">Coders' Arena</h1>
+                <span class="ml-4 px-3 py-1 bg-red-900 text-red-300 rounded-full text-sm">Team Red</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors" onclick="window.location.href='team-red-dashboard.html'">
+                    Back to Dashboard
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="orbitron-font text-3xl font-bold mb-2">Logo Guesser</h2>
+                <p class="text-gray-400 mb-4">
+                    Identify company logos from images. 15 correct answers needed.
+                </p>
+            </div>
+
+            <!-- Stage Play Message -->
+            <div class="bg-gray-800 rounded-2xl p-10 text-center mb-8">
+                <div class="flex justify-center mb-6">
+                    <i data-feather="mic" class="text-red-400" style="width: 4rem; height: 4rem;"></i>
+                </div>
+                <h3 class="orbitron-font text-2xl font-bold mb-6">Played on Stage with Host</h3>
+                <p class="stage-message text-gray-300 mb-6">
+                    This challenge will be conducted on the main stage with a host.<br>
+                    Please proceed to the stage area when called.<br>
+                    No timer required - the host will guide you through the activity.
+                </p>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+</html>

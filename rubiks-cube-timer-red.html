@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube Timer - Coders' Arena</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        .orbitron-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .timer-display {
+            font-size: 6rem;
+            font-weight: 700;
+        }
+        .time-entry {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="orbitron-font text-2xl font-bold">Coders' Arena</h1>
+                <span class="ml-4 px-3 py-1 bg-red-900 text-red-300 rounded-full text-sm">Team Red</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors" onclick="window.location.href='team-red-dashboard.html'">
+                    Back to Dashboard
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="orbitron-font text-3xl font-bold mb-2">Rubik's Cube Timer</h2>
+                <p class="text-gray-400">
+                    Solve the Rubik's cube as fast as possible. Press spacebar to start/stop timer.
+                </p>
+            </div>
+
+            <!-- Timer Display -->
+            <div class="bg-gray-800 rounded-2xl p-10 mb-10 text-center">
+                <div id="timer" class="timer-display mb-6">00:00.00</div>
+                <div class="flex justify-center space-x-4">
+                    <button id="start-btn" class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold transition-colors">
+                        Start
+                    </button>
+                    <button id="stop-btn" class="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-semibold transition-colors" disabled>
+                        Stop
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Timer variables
+        let startTime;
+        let elapsedTime = 0;
+        let timerInterval;
+        let isRunning = false;
+
+        // DOM elements
+        const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+
+        // Format time for display
+        function formatTime(ms) {
+            const totalSeconds = ms / 1000;
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            const milliseconds = Math.floor((ms % 1000) / 10);
+            
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}.${milliseconds.toString().padStart(2, '0')}`;
+        }
+
+        // Update timer display
+        function updateDisplay() {
+            timerDisplay.textContent = formatTime(elapsedTime);
+        }
+
+        // Start timer
+        function startTimer() {
+            if (!isRunning) {
+                startTime = Date.now() - elapsedTime;
+                timerInterval = setInterval(function() {
+                    elapsedTime = Date.now() - startTime;
+                    updateDisplay();
+                }, 10);
+                isRunning = true;
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            }
+        }
+
+        // Stop timer
+        function stopTimer() {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        }
+
+        // Event listeners
+        startBtn.addEventListener('click', startTimer);
+        stopBtn.addEventListener('click', stopTimer);
+
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            // Only trigger if not typing in an input field
+            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (isRunning) {
+                        stopTimer();
+                    } else {
+                        startTimer();
+                    }
+                }
+            }
+        });
+
+        // Touch controls for mobile
+        timerDisplay.addEventListener('click', function() {
+            if (isRunning) {
+                stopTimer();
+            } else {
+                startTimer();
+            }
+        });
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>

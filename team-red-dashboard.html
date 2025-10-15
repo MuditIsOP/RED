@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coders' Arena - Team Red Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+        .orbitron-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .task-card {
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+        .progress-ring circle {
+            transition: stroke-dashoffset 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="orbitron-font text-2xl font-bold">Coders' Arena</h1>
+                <span class="ml-4 px-3 py-1 bg-red-900 text-red-300 rounded-full text-sm">Team Red</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition-colors">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Round Status -->
+        <div class="mb-10 text-center">
+            <h2 class="orbitron-font text-3xl font-bold mb-2">Round 1: Multi-Task Challenge</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Complete as many challenges as possible. Select tasks strategically to maximize your score.
+            </p>
+        </div>
+
+        <!-- Task Grid -->
+        <div class="mb-12">
+            <h3 class="orbitron-font text-2xl font-bold mb-6">Available Challenges</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Task 1 -->
+                <div class="task-card bg-gray-800 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="orbitron-font text-xl font-bold">Rubik's Cube Timer</h4>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Physical</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Solve a Rubik's cube while being timed. Click start when ready.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Status: Not Started</span>
+                        <a href="rubiks-cube-timer-red.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm transition-colors">
+                            Open Timer
+                        </a>
+                    </div>
+                </div>
+<!-- Task 2 -->
+                <div class="task-card bg-gray-800 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="orbitron-font text-xl font-bold">Type Master</h4>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Digital</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Type the given paragraph with 90%+ accuracy to pass.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Status: Not Started</span>
+                        <a href="type-master-red.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm transition-colors">
+                            Start Task
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Task 3 -->
+                <div class="task-card bg-gray-800 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="orbitron-font text-xl font-bold">Buzz Wire Timer</h4>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Physical</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Navigate the wand through the wire without touching.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Status: Not Started</span>
+                        <a href="buzz-wire-timer-red.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm transition-colors">
+                            Open Timer
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Task 4 -->
+                <div class="task-card bg-gray-800 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="orbitron-font text-xl font-bold">Logo Guesser</h4>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Visual</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Identify company logos from images. 15 correct answers needed.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Status: Not Started</span>
+                        <a href="logo-guesser-red.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm transition-colors">
+                            Start Task
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Task 6 -->
+                <div class="task-card bg-gray-800 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="orbitron-font text-xl font-bold">Crossword Puzzle</h4>
+                        <span class="px-2 py-1 bg-red-900 text-red-300 rounded text-xs">Logic</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Solve the crossword puzzle with technical clues.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">Status: Not Started</span>
+                        <a href="crossword-puzzle-red.html" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm transition-colors">
+                            Start Task
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+</html>
